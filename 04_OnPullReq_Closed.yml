@@ -1,4 +1,4 @@
-name: "Multi event Pipeline/ Workflow with Workflow Dispatch"
+name: "Multi event Pipeline/ Workflow and pull_request closed"
 on: 
     push: #Event: whenevr a push is made to the Master/ test
         branches:
@@ -6,7 +6,9 @@ on:
             - test
     pull_request: #Event: whenevr a push is made to the repository
         branches:
-                - master
+            - master
+        types:
+            - closed
     workflow_dispatch: 
 
 
@@ -25,7 +27,15 @@ jobs:
         steps:
          - name: "Running on the Master/Test pull"
            run: echo "Running on the Master/Test pull"
-  
+    
+    on-pull_request_closed:    #job name
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        runs-on: ubuntu-latest
+        steps:
+         - name: "Running on the  pull closed"
+           run: echo "Running on the  pull closed"
+           
+    
     on-workflow-dispatch:    #job name
         if: github.event_name == 'workflow_dispatch'
         runs-on: ubuntu-latest
