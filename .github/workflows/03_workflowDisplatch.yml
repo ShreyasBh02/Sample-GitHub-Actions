@@ -1,4 +1,4 @@
-name: "Multi event Pipeline/ Workflow"
+name: "Multi event Pipeline/ Workflow with Workflow Dispatch"
 on: 
     push: #Event: whenevr a push is made to the Master/ test
         branches:
