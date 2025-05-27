@@ -6,9 +6,9 @@ on:
             - test
     pull_request: #Event: whenevr a push is made to the repository
         branches:
-                - master
+            - master
         types:
-                - closed
+            - closed
     workflow_dispatch: 
 
 
